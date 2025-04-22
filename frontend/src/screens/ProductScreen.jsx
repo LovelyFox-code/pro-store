@@ -1,12 +1,21 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
 import Rating from "../components/Rating";
-import products from "../products";
+import axios from "axios";
 
 export default function ProductScreen() {
+  const [product, setProduct] = useState({});
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${productId}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [productId]);
 
   if (!product) {
     return <div>Product Not Found</div>;
@@ -19,7 +28,12 @@ export default function ProductScreen() {
       </Link>
       <Row>
         <Col md={5}>
-          <Image src={product.image} alt={product.name} fluid className="product-image" />
+          <Image
+            src={product.image}
+            alt={product.name}
+            fluid
+            className="product-image"
+          />
         </Col>
         <Col md={4}>
           <ListGroup variant="flush">
@@ -27,7 +41,10 @@ export default function ProductScreen() {
               <h3 className="product-title">{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+              <Rating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+              />
             </ListGroup.Item>
             <ListGroup.Item>
               <span className="product-brand">
@@ -48,7 +65,7 @@ export default function ProductScreen() {
                 <Row>
                   <Col>Price:</Col>
                   <Col>
-                    <span className="product-price">€{product.price.toFixed(2)}</span>
+                    <span className="product-price">€{product.price}</span>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -56,8 +73,12 @@ export default function ProductScreen() {
                 <Row>
                   <Col>Status:</Col>
                   <Col>
-                    <span className={`product-status ${product.countInStock > 0 ? 'in-stock' : 'out-of-stock'}`}>
-                      {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                    <span
+                      className={`product-status ${
+                        product.countInStock > 0 ? "in-stock" : "out-of-stock"
+                      }`}
+                    >
+                      {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
                     </span>
                   </Col>
                 </Row>
