@@ -1,0 +1,232 @@
+/* bootstrap.custom.css */
+
+:root {
+  --bs-primary: #3e5c76;
+  --bs-primary-rgb: 62, 92, 118;
+  
+  --bs-secondary: #1d2d44;
+  --bs-secondary-rgb: 29, 45, 68;
+  
+  --bs-dark: #0d1321;
+  --bs-dark-rgb: 13, 19, 33;
+  
+  --bs-light: #f0ebd8;
+  --bs-light-rgb: 240, 235, 216;
+  
+  --bs-accent: #748cab;
+  --bs-accent-rgb: 116, 140, 171;
+  
+  --bs-body-color: #0d1321;
+  --bs-body-bg: #f0ebd8;
+  --bs-border-radius: 0.5rem;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-blur: blur(12px);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(62, 92, 118, 0.12);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: "Inter", "Poppins", sans-serif;
+  background: linear-gradient(180deg, var(--bs-light) 0%, #ffffff 100%);
+  color: var(--bs-dark);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.navbar {
+  background: white;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(13, 19, 33, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.navbar-dark {
+  background-color: var(--bs-dark) !important;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--bs-light) !important;
+  letter-spacing: 0.5px;
+}
+
+.navbar-toggler {
+  border: 1px solid #eee;
+  padding: 0.5rem;
+}
+
+.nav-link {
+  color: var(--bs-light) !important;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+  border-radius: 0.5rem;
+}
+
+.nav-link:hover {
+  color: var(--bs-accent) !important;
+  background: rgba(116, 140, 171, 0.05);
+}
+
+.nav-link svg {
+  font-size: 1.1rem;
+}
+
+footer {
+  background: white;
+  padding-top: 2rem;
+  color: var(--bs-dark);
+  text-align: center;
+  font-size: 0.95rem;
+  border-top: 1px solid #eee;
+}
+
+main {
+  min-height: 80vh;
+  padding: 2rem 0;
+}
+
+.btn {
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: var(--bs-light);
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+  transform: translateY(-1px);
+}
+
+.card {
+  border-radius: var(--bs-border-radius);
+  border: 1px solid rgba(62, 92, 118, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(13, 19, 33, 0.05);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 19, 33, 0.1);
+}
+
+.card-title {
+  color: var(--bs-primary) !important;
+}
+
+.card-text {
+  color: var(--bs-secondary) !important;
+}
+
+.price {
+  color: var(--bs-accent) !important;
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(62, 92, 118, 0.2);
+  padding: 0.75rem 1rem;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 4px rgba(62, 92, 118, 0.1);
+  background: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container,
+.card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.rating {
+  color: var(--bs-accent);
+}
+
+.rating-text {
+  margin-left: 5px;
+  color: var(--bs-secondary);
+}
+
+.product-image {
+  border-radius: var(--bs-border-radius);
+  box-shadow: 0 4px 6px rgba(13, 19, 33, 0.1);
+}
+
+.product-title {
+  color: var(--bs-primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-brand {
+  color: var(--bs-accent);
+  font-weight: 500;
+}
+
+.product-description {
+  color: var(--bs-secondary);
+  line-height: 1.6;
+}
+
+.product-price {
+  color: var(--bs-primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-status {
+  font-weight: 500;
+}
+
+.product-status.in-stock {
+  color: #198754;
+}
+
+.product-status.out-of-stock {
+  color: #dc3545;
+}
+
+.btn-back {
+  color: var(--bs-secondary);
+  background-color: var(--bs-light);
+  border: 1px solid rgba(13, 19, 33, 0.1);
+  transition: var(--transition);
+}
+
+.btn-back:hover {
+  background-color: var(--bs-accent);
+  color: var(--bs-light);
+  transform: translateX(-2px);
+}
