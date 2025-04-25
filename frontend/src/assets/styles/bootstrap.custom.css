@@ -3,19 +3,19 @@
 :root {
   --bs-primary: #3e5c76;
   --bs-primary-rgb: 62, 92, 118;
-  
+
   --bs-secondary: #1d2d44;
   --bs-secondary-rgb: 29, 45, 68;
-  
+
   --bs-dark: #0d1321;
   --bs-dark-rgb: 13, 19, 33;
-  
+
   --bs-light: #f0ebd8;
   --bs-light-rgb: 240, 235, 216;
-  
+
   --bs-accent: #748cab;
   --bs-accent-rgb: 116, 140, 171;
-  
+
   --bs-body-color: #0d1321;
   --bs-body-bg: #f0ebd8;
   --bs-border-radius: 0.5rem;
@@ -29,11 +29,10 @@
 
 body {
   font-family: "Inter", "Poppins", sans-serif;
-  background: linear-gradient(180deg, var(--bs-light) 0%, #ffffff 100%);
+  background: linear-gradient(180deg, var(--bs-light) 30%, #ffffff 100%);
   color: var(--bs-dark);
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
 .navbar {
@@ -113,6 +112,10 @@ main {
   background-color: var(--bs-secondary);
   border-color: var(--bs-secondary);
   transform: translateY(-1px);
+}
+.btn:disabled {
+  background-color: rgb(169, 169, 169);
+  border: grey;
 }
 
 .card {
