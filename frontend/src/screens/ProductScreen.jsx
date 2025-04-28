@@ -1,21 +1,14 @@
-import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
 import Rating from "../components/Rating";
-import axios from "axios";
+import { useGetProductByIdQuery } from "../slices/productsAPISlice";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 export default function ProductScreen() {
-  const [product, setProduct] = useState({});
   const { id: productId } = useParams();
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${productId}`);
-      setProduct(data);
-    };
-    fetchProduct();
-  }, [productId]);
+  const { data: product, isLoading, error } = useGetProductByIdQuery(productId);
 
   if (!product) {
     return <div>Product Not Found</div>;
@@ -26,6 +19,8 @@ export default function ProductScreen() {
       <Link className="btn btn-back my-3" to="/">
         <FaArrowLeft className="me-1" /> Go Back
       </Link>
+      {isLoading && <Loader />}
+      {error && <Message>{error?.data.message || error.error}</Message>}
       <Row>
         <Col md={5}>
           <Image
